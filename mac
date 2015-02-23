@@ -194,6 +194,8 @@ brew_cask_install 'google-chrome'
 brew_cask_install_or_upgrade 'things'
 brew_cask_install_or_upgrade 'slack'
 brew_cask_install_or_upgrade 'dashlane'
+brew_cask_install_or_upgrade 'iterm2'
+
 
 if [ -f "$HOME/.laptop.local" ]; then
   . "$HOME/.laptop.local"
