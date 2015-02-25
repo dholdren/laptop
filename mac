@@ -202,7 +202,7 @@ brew_cask_install_or_upgrade 'dashlane'
 brew_cask_install_or_upgrade 'iterm2'
 brew_cask_install_or_upgrade 'valentina-studio'
 brew_cask_install_or_upgrade 'sublime-text'
-brew_cask_install_or_upgrade 'source-tree'
+brew_cask_install_or_upgrade 'sourcetree'
 
 brew tap caskroom/versions
 brew_cask_install_or_upgrade 'google-chrome-canary'
