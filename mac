@@ -173,7 +173,7 @@ brew_install_or_upgrade 'openssl'
 brew unlink openssl && brew link openssl --force
 brew_install_or_upgrade 'libyaml'
 
-##RVM and ruby
+##TODO RVM and ruby
 
 
 #gem update --system
@@ -189,13 +189,27 @@ brew_install_or_upgrade 'heroku-toolbelt'
 brew tap caskroom/cask
 brew_install_or_upgrade 'brew-cask'
 
+#TODO install to /Applications
 brew_cask_install_or_upgrade 'dropbox'
-brew_cask_install 'google-chrome'
+#brew_cask_install 'google-chrome' #chrome can't be a symlink for 1Password to work?
+brew_cask_install_or_upgrade '1password'
 brew_cask_install_or_upgrade 'things'
 brew_cask_install_or_upgrade 'slack'
 brew_cask_install_or_upgrade 'dashlane'
 brew_cask_install_or_upgrade 'iterm2'
+brew_cask_install_or_upgrade 'valentina-studio'
+brew_cask_install_or_upgrade 'sublime-text'
+brew_cask_install_or_upgrade 'source-tree'
 
+brew tap caskroom/versions
+brew_cask_install_or_upgrade 'google-chrome-canary'
+
+#TODO oh-my-zsh
+#TODO fix PATH variable oh-my-zsh sets up (missing $PATH:)
+
+#TODO generate ssh keys if not present, message to upload to github
+
+#TODO dotfiles? need either github access up or dropbox synced...
 
 if [ -f "$HOME/.laptop.local" ]; then
   . "$HOME/.laptop.local"
