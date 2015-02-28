@@ -109,7 +109,6 @@ gem_install_or_update() {
   else
     fancy_echo "Installing %s ..." "$1"
     gem install "$@"
-    rbenv rehash
   fi
 }
 
@@ -173,8 +172,6 @@ brew_install_or_upgrade 'pianobar'
 brew_install_or_upgrade 'pv'
 brew_install_or_upgrade 'wget'
 brew_install_or_upgrade 'go'
-#TODO set GOPATH=$HOME/go and add to PATH in .zshenv
-#TODO alias git=hub
 
 brew_install_or_upgrade 'openssl'
 brew unlink openssl && brew link openssl --force
@@ -184,7 +181,11 @@ brew tap thoughtbot/formulae
 brew install gitsh
 
 ##TODO RVM and ruby
+if command -v gpg >/dev/null; then
+  gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+fi
 
+\curl -sSL https://get.rvm.io | bash -s stable --ruby=2.0.0-p353
 
 #gem update --system
 
@@ -200,33 +201,36 @@ brew tap caskroom/cask
 brew_install_or_upgrade 'brew-cask'
 
 #TODO install to /Applications
-brew_cask_install_or_upgrade 'dropbox'
-#brew_cask_install 'google-chrome' #chrome can't be a symlink for 1Password to work?
-brew_cask_install_or_upgrade '1password'
-brew_cask_install_or_upgrade 'things'
+brew_cask_install_or_upgrade 'dropbox' #needs login
+brew_cask_install 'google-chrome'
+brew_cask_install_or_upgrade '1password' #needs license
+brew_cask_install_or_upgrade 'things' #needs login for sync, license
 brew_cask_install_or_upgrade 'slack'
 brew_cask_install_or_upgrade 'dashlane'
 brew_cask_install_or_upgrade 'iterm2'
 brew_cask_install_or_upgrade 'valentina-studio'
-brew_cask_install_or_upgrade 'sublime-text'
+brew_cask_install_or_upgrade 'sublime-text' #needs license
 #TODO symlink ~/Library/Application Support/Sublime Text3/User to ~/.sublime_settings and ~/.sublime_settings to dotfiles
 brew_cask_install_or_upgrade 'sourcetree'
 brew_cask_install_or_upgrade 'divvy'
-brew_cask_install_or_upgrade 'alfred'
-#TODO automate alfred powerpack install?
-#TODO add alred workflows
+brew_cask_install_or_upgrade 'alfred' #needs license for powerpack install for workflows
+#TODO alfred workflows
 brew_cask_install_or_upgrade 'dash'
+#TODO dash documentation installs
+brew_cask_install_or_upgrade 'charles'
 
-
-brew tap caskroom/versions
+brew_tap 'caskroom/versions'
 brew_cask_install_or_upgrade 'google-chrome-canary'
 
-#TODO oh-my-zsh
-#TODO fix PATH variable oh-my-zsh sets up (missing $PATH:)
+fancy_echo "Checking for SSH key, generating one if it doesn't exist ..."		
+  [[ -f ~/.ssh/id_rsa.pub ]] || ssh-keygen -t rsa		
 
-#TODO generate ssh keys if not present, message to upload to github
+fancy_echo "Copying public key to clipboard. Paste it into your Github account ..."		
+ [[ -f ~/.ssh/id_rsa.pub ]] && cat ~/.ssh/id_rsa.pub | pbcopy		
+ open https://github.com/account/ssh
 
 #TODO dotfiles? need either github access up or dropbox synced...
+#TODO install oh-my-zsh or keep in dotfiles?
 
 if [ -f "$HOME/.laptop.local" ]; then
   . "$HOME/.laptop.local"
