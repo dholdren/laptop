@@ -218,6 +218,7 @@ brew_cask_install_or_upgrade 'alfred' #needs license for powerpack install for w
 brew_cask_install_or_upgrade 'dash'
 #TODO dash documentation installs
 brew_cask_install_or_upgrade 'charles'
+brew_cask_install_or_upgrade 'spotify'
 
 brew_tap 'caskroom/versions'
 brew_cask_install_or_upgrade 'google-chrome-canary'
