@@ -200,6 +200,9 @@ brew_install_or_upgrade 'heroku-toolbelt'
 brew tap caskroom/cask
 brew_install_or_upgrade 'brew-cask'
 
+append_to_zshrc 'export HOMEBREW_CASK_OPTS="--appdir=/Applications"'
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 #TODO install to /Applications
 brew_cask_install_or_upgrade 'dropbox' #needs login
 brew_cask_install 'google-chrome'
