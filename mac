@@ -223,6 +223,7 @@ brew_cask_install_or_upgrade 'dash'
 brew_cask_install_or_upgrade 'charles'
 brew_cask_install_or_upgrade 'spotify'
 brew_cask_install_or_upgrade 'screenhero'
+brew_cask_install_or_updgrade 'haskell-platform'
 
 brew_tap 'caskroom/versions'
 brew_cask_install_or_upgrade 'google-chrome-canary'
