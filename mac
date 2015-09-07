@@ -217,6 +217,7 @@ brew_cask_install_or_upgrade 'sublime-text' #needs license
 #TODO symlink ~/Library/Application Support/Sublime Text3/User to ~/.sublime_settings and ~/.sublime_settings to dotfiles
 brew_cask_install_or_upgrade 'sourcetree'
 brew_cask_install_or_upgrade 'divvy'
+brew_cask_install_or_upgrade 'slate' #TODO remove divvy
 brew_cask_install_or_upgrade 'alfred' #needs license for powerpack install for workflows
 #TODO alfred workflows
 brew_cask_install_or_upgrade 'dash'
