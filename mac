@@ -237,6 +237,58 @@ fancy_echo "Copying public key to clipboard. Paste it into your Github account .
  [[ -f ~/.ssh/id_rsa.pub ]] && cat ~/.ssh/id_rsa.pub | pbcopy		
  open https://github.com/account/ssh
 
+fancy_echo "OSX settings, e.g. require password in screensaver immediately"
+
+#lock as soon as the screensaver starts
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+#show all files in Finder
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
+#don't save new docs to iCloud
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+#show file extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Disable the “Are you sure you want to open this application?” dialog
+#defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+#fast keyboard repeat and repeat start
+defaults write NSGlobalDomain KeyRepeat -int 0.02
+defaults write NSGlobalDomain InitialKeyRepeat -int 12
+
+#two finger right-click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -int 1
+
+# Always show scrollbars
+defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+# Possible values: `WhenScrolling`, `Automatic` and `Always`
+
+# Hot Corners
+# Top left screen corner: Application windows
+defaults write com.apple.dock wvous-tl-corner -int 3
+defaults write com.apple.dock wvous-tl-modifier -int 0
+# Top right screen corner → Desktop
+defaults write com.apple.dock wvous-tr-corner -int 4
+defaults write com.apple.dock wvous-tr-modifier -int 0
+# Bottom left screen corner: Mission Control
+defaults write com.apple.dock wvous-bl-corner -int 2
+defaults write com.apple.dock wvous-bl-modifier -int 0
+# Bottom right screen corner: Start screen saver
+defaults write com.apple.dock wvous-br-corner -int 5
+defaults write com.apple.dock wvous-br-modifier -int 0
+
+# Privacy: don’t send search queries to Apple
+defaults write com.apple.Safari UniversalSearchEnabled -bool false
+defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+
+##### App settings
+# Enable Debug Menu in the Mac App Store
+defaults write com.apple.appstore ShowDebugMenu -bool true
+
+
 #TODO dotfiles? need either github access up or dropbox synced...
 #TODO install oh-my-zsh or keep in dotfiles?
 
